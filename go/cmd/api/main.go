@@ -14,20 +14,18 @@ type application struct {
 
 func main() {
 	// set application config
-	// var app application
+	var app application
 
 	// read from command line
 
 	// connect to the database
 
-	// app.Domain = "example.com"
+	app.Domain = "example.com"
 
 	log.Println("Stargin application on port", port)
 
-	http.HandleFunc("/", Hello)
-
 	// start a web server
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	err := http.ListenAndServe(fmt.Sprintf(":%d", port), app.routes())
 	if err != nil {
 		log.Fatal(err)
 	}
